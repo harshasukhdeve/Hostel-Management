@@ -1,84 +1,106 @@
-package main;
+ package main;
 
-import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertEquals;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
-public class Hostel{
-	   public static void writedata()throws IOException {
-		   BufferedWriter out = null;
+ public class Hostel{
+        public static void writedate()throws IOException {
+           BufferedWriter out = null;
            try{
             out = new BufferedWriter(new FileWriter("allotedhostel.txt"));
             try{
-	       		BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
-	                   
-	            String line = null;
-	           while ((line = br.readLine()) != null) {
-	               String[] splited = line.split("\\s+");
-	               	 out.write(splited[0]);
-	                 out.newLine();
-	               }
-	           }catch(Exception e){
-	               System.out.println(e);
-	           }
-           }catch(Exception e){
-               //print
-               System.out.println(e);
-               
-           }finally{
-               out.close();
-           }
-	   }
-	   public static boolean readData(String name) {
-		   try{
-	             BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
-	               String line = null;
-	            
-	               //write your code here !!!
-	               while ((line = br.readLine()) != null) {
-		               String[] splited = line.split("\\s+");
-		               String checkName = splited[0];
-		               //write your code here !!!
-//		               compare check name with name and return true if present and false if not
-	               }
-	               
-	               
-	            }catch(Exception e){
-	                System.out.println(e);
-	            }
-			return true;
-	   }
-       public static void allotHostel(){
-    	   //write your code here!!!
-    	   
-       }
-
-       public static boolean verifyStudent(int regNo){
-         try{
-             BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
+               BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
+    
                String line = null;
             while ((line = br.readLine()) != null) {
-                String[] splited = line.split("\\s+");
-
-                String reg = Integer.toString(regNo);
-                    if(splited[1].equals(reg) ){
-                        return false;
-                    }
-                }
+               String[] splited = line.split("\\s+");
+                 out.write(splited[0]);
+                 out.newLine();
+               }
             }catch(Exception e){
                 System.out.println(e);
             }
-            return true;
+        }catch(Exception e){
+
+           System.out.println(e);
+   
+        }finally{
+             out.close();
         }
-           
+     }
+     public static boolean readDate(String name) {
+        try{
+              BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
+                 String line = null;
+
+
+               while( (line=br.readLine()) !=null)
+               {
+                   String[] splited = line.split("\\s+");
+                   String checkName = name;
+
+
+                    if(splited[0].equals(name))
+                    {
+                        return true;
+                    }
+                }
+
+
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+          return false;
+       }
+       public static void allotHostel(){
+
+           try
+           {
+               writedate();
+           }catch(IOException e)
+           {
+                System.out.println(e);
+           }
+
+       }
+   
+       public static boolean verifyStudent(int regNo){
+          try{
+              BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
+                 String line = null;
+             while ((line = br.readLine()) != null) {
+                 String[] splited = line.split("\\s+");
+
+                 String reg = Integer.toString(regNo);
+                     if(splited[1].equals(reg) ) {
+                         return false;
+                     }
+              }
+           }
+             catch(Exception e)
+           {
+               System.out.println(e);
+           }
+           return true;
+        }
+
        public static boolean verifyName(String name){
-    	   boolean chk = true;
-    	   
-    	   //write your code here
-    	   
-    	   return chk;
-        }
+            boolean chk = true;
+ 
+            chk = readDate(name);
+
+            return chk;
+         }
+
+
+          
+
         
 
 		static String typeName(){
